@@ -1,0 +1,1175 @@
+/* Estilos para el inicio de sesión */
+.login-container {
+    max-width: 400px;
+    margin: 100 auto;
+    padding: 200px;
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 80px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #333; /* Color del título */
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.login-button:nth-child(1) {
+    background-color: #4285F4; /* Azul de Google */
+}
+
+.login-button:nth-child(2) {
+    background-color: #3b5998; /* Azul de Facebook */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-button {
+    background-color: #ff8c00; /* Color naranja */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #e67e22; /* Color naranja más oscuro en hover */
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+    background-image: url('fondo.jpg'); /* Reemplaza esto con la ruta de tu imagen */
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+/* Otros estilos */
+.fade-in {
+    animation: fadeIn 1s; /* Aquí puedes ajustar la duración de la animación */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+    background-image: url('fondo.jpg'); /* Asegúrate de que la ruta sea correcta */
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex; /* Usa flexbox para centrar elementos */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+}
+
+section {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    width: 300px; /* Ancho del formulario */
+}
+
+/* Otros estilos */
+.fade-in {
+    animation: fadeIn 1s; /* Aquí puedes ajustar la duración de la animación */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.order-container {
+    text-align: center; /* Centra el contenido dentro del contenedor */
+    margin-top: 75px; /* Agrega margen superior para separación */
+}
+
+.order-button {
+    padding: 20px 60px; /* Aumenta el tamaño del botón */
+    background-color: orange; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px; /* Tamaño de la fuente más grande */
+    transition: background-color 0.3s; /* Agrega una transición suave */
+}
+
+.order-button:hover {
+    background-color: darkorange; /* Color al pasar el mouse */
+}
+
+.total-price {
+    font-size: 24px; /* Tamaño de la fuente para el precio */
+    margin-top: 15px;
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 30px; /* Espacio superior */
+}
+
+.option-button {
+    padding: 20px 40px; /* Tamaño más grande */
+    background-color: #ff8c00; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none;
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 24px; /* Tamaño de fuente más grande */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: background-color 0.3s, transform 0.2s; /* Transición suave */
+}
+
+.option-button:hover {
+    background-color: #e67e22; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Aumentar el tamaño ligeramente al pasar el mouse */
+}
+
+h2 {
+    color: #333; /* Color del título */
+    font-size: 28px; /* Tamaño de fuente más grande */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+
+ #impresion {
+        padding: 40px;
+        max-width: 1000px; /* Ancho mayor para la sección */
+        margin: 0 auto; /* Centra la sección */
+        background-color: #f9f9f9; /* Color de fondo */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+    #image-preview-container img {
+        border: 1px solid #ccc; /* Borde suave para imágenes */
+        max-width: 150px; /* Limita el ancho de las imágenes */
+        margin: 5px;
+    }
+
+    #paste-area {
+        min-height: 100px; /* Altura mínima para el área de pegado */
+    }
+
+    #specifications {
+        padding: 10px; /* Espaciado interno */
+        border: 1px solid #ccc; /* Borde del textarea */
+        border-radius: 5px; /* Bordes redondeados */
+    }
+
+    .submit-button {
+        background-color: #ff8c00; /* Color naranja */
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+        margin-top: 10px; /* Espacio superior */
+    }
+
+    .submit-button:hover {
+        background-color: #e67e22; /* Color más oscuro en hover */
+    }
+
+
+
+ <style>
+        #paste-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            min-height: 100px;
+            background-color: #f9f9f9;
+        }
+
+        #image-preview-container img {
+            width: 100px;
+            margin: 5px;
+        }
+    </style>
+ <style>
+        /* Estilos básicos para el formulario */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        .form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+
+    <style>
+        #paste-area {
+            border: 2px dashed #ccc;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: left;
+            min-height: 60px;
+            background-color: #f9f9f9;
+        }
+
+        #image-preview-container img {
+            width: 100px;
+            margin: 5px;
+        }
+
+        .total-price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .order-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .order-item img {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .modify-button, .delete-button {
+            margin-left: 10px;
+        }
+
+        .order-details {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .form-container {
+            margin-bottom: 20px;
+        }
+    </style>
+    <style>
+        /* Estilos básicos para el formulario */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        .form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+        /* Estilos para la pestaña desplegable */
+        .dropdown {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            padding: 10px;
+        }
+        .dropdown-header {
+            cursor: pointer;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .dropdown-content {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+        .dropdown-content p {
+            margin: 5px 0;
+        }
+    </style>
+ <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #f4f4f4;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+            transition: margin-left 0.3s;
+        }
+
+        .sidebar {
+            position: relative;
+            width: 200px;
+            background-color: #fff;
+            border-right: 1px solid #ccc;
+            transition: transform 0.3s;
+            transform: translateX(-100%);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .toggle-button {
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .user-info {
+            padding: 10px;
+        }
+
+        .order-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Estilo para el dropdown del usuario */
+        .user-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        section {
+            display: none;
+        }
+   
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100vh; /* Ocupa toda la altura */
+    background-color: #f4f4f4;
+}
+
+/* Estilos para el contenedor principal */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido del main */
+    padding: 20px;
+    max-width: 1200px; /* Limita el ancho máximo */
+    width: 100%; /* Permite que el contenedor sea responsive */
+}
+
+/* Estilos para la pestaña desplegable */
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar la pestaña desplegable */
+    max-width: 300px; /* Establecer un ancho máximo */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Centrar la pestaña */
+    padding: 10px;
+}
+
+.dropdown-header {
+    cursor: pointer;
+    padding: 20px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.dropdown-content {
+    display: none; /* Ocultar contenido por defecto */
+    padding: 10px;
+}
+
+/* Mostrar el contenido de la pestaña cuando se hace clic */
+.dropdown.open .dropdown-content {
+    display: block; /* Mostrar contenido */
+}
+
+/* Otros estilos */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-info {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1;
+    padding: 10px;
+}
+#enviarPedido {
+    background-color: #25D366; /* Color verde de WhatsApp */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#enviarPedido:hover {
+    background-color: #128C7E; /* Color más oscuro al pasar el mouse */
+}
+
+.user-dropdown.open .user-info {
+    display: block; /* Mostrar la info del usuario cuando esté abierto */
+}
+
+   </style>
+	/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Asegura que ocupe toda la altura */
+    background-color: #f4f4f4;
+}
+
+/* Estilos para el contenedor principal */
+main {
+    flex: 1;
+    padding: 20px;
+    transition: margin-left 0.3s;
+    max-width: 1200px; /* Limitar el ancho máximo para mantener el contenido centrado */
+    width: 100%; /* Permitir que el contenedor sea responsive */
+}
+
+/* Estilos para el sidebar */
+.sidebar {
+    position: relative;
+    width: 200px;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+}
+
+/* Mostrar el sidebar */
+.sidebar.open {
+    transform: translateX(0);
+}
+
+<style>
+        /* Estilos para el dropdown del usuario */
+        .user-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-info {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            z-index: 1;
+            padding: 10px;
+            width: 200px;
+        }
+
+        .order-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Ocultar todas las secciones por defecto */
+        section {
+            display: none;
+        }
+    </style>
+
+
+/* Estilo para la pestaña desplegable */
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px; /* Establecer un ancho máximo */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Centrar la pestaña */
+    padding: 10px;
+}
+
+.dropdown-header {
+    cursor: pointer;
+    padding: 10px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.dropdown-content {
+    display: none; /* Ocultar contenido por defecto */
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+/* Mostrar el contenido de la pestaña cuando se hace clic */
+.dropdown.open .dropdown-content {
+    display: block; /* Mostrar contenido */
+}
+
+/* Otros estilos */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-info {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1;
+    padding: 10px;
+    width: 200px;
+}
+
+.user-dropdown.open .user-info {
+    display: block; /* Mostrar la info del usuario cuando esté abierto */
+}
+	
+	
+<style>
+        /* Estilos para el dropdown del usuario */
+        .user-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-info {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            z-index: 1;
+            padding: 10px;
+            width: 200px;
+        }
+
+        .order-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Ocultar todas las secciones por defecto */
+        section {
+            display: none;
+        }
+    </style>
+.container-flex {
+    display: flex;
+    justify-content: space-around; /* Espacio entre ambos cuadros */
+    align-items: flex-start;
+}
+
+<style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        main {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .sidebar h2 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+        }
+        .sidebar p {
+            margin: 10px 0;
+        }
+        .sidebar button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .sidebar button:hover {
+            background-color: #e68900;
+        }
+        section {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            position: fixed;
+            left: -250px; /* Escondido inicialmente */
+            width: 250px;
+            height: 100%;
+            background-color: #f4f4f4;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+            transition: left 0.3s ease;
+            padding: 15px;
+        }
+        .sidebar.active {
+            left: 0; /* Desplegar */
+        }
+        .toggle-sidebar {
+            position: fixed;
+            left: 10px;
+            top: 20px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .submit-button {
+            display: block;
+            margin: 20px auto;
+        }
+        .error-message {
+            color: red;
+        }
+        /* Estilos adicionales para la página */
+    </style>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            position: fixed;
+            left: -250px; /* Escondido inicialmente */
+            width: 250px;
+            height: 100%;
+            background-color: #f4f4f4;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+            transition: left 0.3s ease;
+            padding: 15px;
+        }
+        .sidebar.active {
+            left: 0; /* Desplegar */
+        }
+        .toggle-sidebar {
+            position: fixed;
+            left: 10px;
+            top: 20px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .submit-button {
+            display: block;
+            margin: 20px auto;
+        }
+        .error-message {
+            color: red;
+        }
+        /* Estilos adicionales para la página */
+    </style>
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.dropdown {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.dropdown-header {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.option-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+}
+
+.option-button:hover {
+    background-color: #0056b3;
+}
+
+.total-price {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+  
+
+#logout-button {
+    background-color: #FF4500; /* Color de fondo para el botón de cerrar sesión */
+    color: white; /* Color del texto */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado */
+    cursor: pointer;
+    transition: background 0.3s; /* Transición suave */
+}
+
+#logout-button:hover {
+    background-color: #FF6347; /* Color más claro al pasar el mouse */
+}
+
+/* Estilos para la barra lateral */
+.sidebar {
+    position: fixed; /* Barra lateral fija */
+    top: 0;
+    left: 0;
+    width: 300px; /* Ancho de la barra lateral */
+    height: 100%; /* Altura completa */
+    background-color: #fff; /* Color de fondo */
+    border-right: 1px solid #ccc; /* Bordes */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para el efecto */
+    transform: translateX(-100%); /* Comienza oculta */
+    transition: transform 0.3s; /* Transición suave */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+.sidebar.open {
+    transform: translateX(0); /* Muestra la barra lateral */
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el contenido a la izquierda */
+    max-width: 300px; /* Ancho de la pestaña */
+    margin: 20px; /* Espacio alrededor */
+}
+
+.dropdown-header {
+    cursor: pointer;
+    padding: 10px;
+    background: #FF8C00; /* Color de fondo */
+    color: white; /* Color del texto */
+    border-radius: 4px;
+    width: 100%; /* Hace que el encabezado ocupe todo el ancho */
+    text-align: left; /* Alineación a la izquierda */
+    transition: background 0.3s; /* Transición suave */
+}
+
+.dropdown-header:hover {
+    background: #FF7F50; /* Color más claro al pasar el mouse */
+}
+
+.dropdown-content {
+    display: none; /* Ocultar por defecto */
+    padding: 10px;
+    background: #f9f9f9; /* Color de fondo para el contenido */
+    border-radius: 4px;
+    width: 100%; /* Hace que el contenido ocupe todo el ancho */
+}
+
+.dropdown-content.open {
+    display: block; /* Mostrar contenido */
+}
+
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        #image-upload {
+            margin: 10px 0;
+        }
+        .image-preview {
+            display: inline-block;
+            position: relative;
+            margin: 10px;
+        }
+        .image-preview img {
+            max-width: 100px;
+            max-height: 100px;
+            border: 2px solid #ccc;
+        }
+        .remove-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .color-option {
+            margin: 5px 0;
+        }
+        .total-price {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+
+ <style>
+        /* Estilos para la barra lateral */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            left: -250px;
+            transition: left 0.3s;
+            background-color: #f0f0f0;
+            padding: 15px;
+            height: 100%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .toggle-button {
+            margin: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100; /* Asegura que el botón esté por encima de la barra lateral */
+        }
+        .dropdown-content {
+            display: none;
+            padding: 10px;
+        }
+        .dropdown-content.open {
+            display: block;
+            position: absolute; /* Cambiado a posición absoluta */
+            z-index: 1001; /* Asegura que no tape el botón */
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .form-container {
+            margin: 20px;
+        }
+        .options-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .option-button {
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+        .submit-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: orange;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: darkorange;
+        }
+        .order-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* Estilos para registro e inicio de sesión */
+        #register, #login {
+            background-color: white;
+            color: green; /* Texto en verde */
+            border: 2px solid green; /* Borde verde */
+            padding: 20px;
+            border-radius: 8px;
+        }
+		.dropdown-content {
+    display: none;
+    padding: 10px;
+    position: absolute; /* Mantén esta propiedad */
+    z-index: 1001; /* Asegura que no tape el botón */
+    margin-top: 40px; /* Ajusta este valor para dejar espacio debajo del botón */
+}
+    </style>
+	
+	 <style>
+        /* Añadir algo de estilo básico para que se vea mejor */
+        #order-list {
+            margin-top: 20px;
+        }
+    </style>
+	   <style>
+        #order-options {
+            display: none; /* Ocultar inicialmente */
+        }
+    </style>
+#logout-button {
+    background-color: #FF4500; /* Color de fondo para el botón de cerrar sesión */
+    color: white; /* Color del texto */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado */
+    cursor: pointer;
+    transition: background 0.3s; /* Transición suave */
+}
+
+#logout-button:hover {
+    background-color: #FF6347; /* Color más claro al pasar el mouse */
+}
+
+#order-options, #carrito {
+	
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2); /* Opcional, para resaltar cada cuadro */
+	
+ <style>
+        /* Estilos para la barra lateral */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            left: -250px;
+            transition: left 0.3s;
+            background-color: #f0f0f0;
+            padding: 15px;
+            height: 100%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .toggle-button {
+            margin: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100; /* Asegura que el botón esté por encima de la barra lateral */
+        }
+        .dropdown-content {
+            display: none;
+            padding: 10px;
+        }
+        .dropdown-content.open {
+            display: block;
+            position: absolute; /* Cambiado a posición absoluta */
+            z-index: 1001; /* Asegura que no tape el botón */
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .form-container {
+            margin: 20px;
+        }
+        .options-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .option-button {
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+        .submit-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: orange;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: darkorange;
+        }
+        .order-list {
+            list-style-type: none;
+            padding: 0;
+        }
+       /* Estilos para registro e inicio de sesión */
+#register, #login {
+    background-color: white; /* Fondo blanco */
+    color: green; /* Texto en verde */
+    border: 2px solid green; /* Borde verde */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    max-width: 400px; /* Ancho máximo */
+    margin: auto; /* Centrado horizontal */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: calc(100% - 20px); /* Ancho completo menos el padding */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espaciado inferior */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+input[type="checkbox"] {
+    margin-right: 5px; /* Espaciado a la derecha */
+}
+
+
