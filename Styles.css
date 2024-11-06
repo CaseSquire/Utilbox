@@ -425,7 +425,54 @@ h2 {
         section {
             display: none;
         }
-   
+ <style>
+ body {
+      font-family: Arial, sans-serif;
+    }
+    .utiles-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .util-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+    .util-item input[type="number"] {
+      width: 60px;
+      margin-left: 10px;
+    }
+    .util-item label {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+ 
 /* General */
 body {
     font-family: Arial, sans-serif;

@@ -73,17 +73,17 @@
     </section>
 
 
-      <section id="order-options" style="display: none;">
-        <h2 style="text-align: center;">Selecciona una Opción</h2>
-        <div class="options-container">
-            <button id="impresion-button" class="option-button" onclick="showImpresion()">Impresión</button>
-            <button id="utiles-button" class="option-button">Útiles</button>
-            <button id="papeleria-button" class="option-button">Papelería</button>
-        </div>
-        <h2 style="text-align: center;">Carrito de Pedidos</h2>
-        <ul id="order-list" class="order-list"></ul>
-        <div id="total-price-order-options" class="total-price">Precio Total: $0.00</div>
-    </section>
+<section id="order-options" style="display: none;">
+    <h2 style="text-align: center;">Selecciona una Opción</h2>
+    <div class="options-container">
+        <button id="impresion-button" class="option-button" onclick="showImpresion()">Impresión</button>
+        <button id="utiles-button" class="option-button" onclick="showUtiles()">Útiles</button>
+        <button id="papeleria-button" class="option-button">Papelería</button>
+    </div>
+    <h2 style="text-align: center;">Carrito de Pedidos</h2>
+    <ul id="order-list" class="order-list"></ul>
+    <div id="total-price-order-options" class="total-price">Precio Total: $0.00</div>
+</section>
 
     <div id="opciones" style="display: none;">
         <button id="enviarPedido" style="font-size: 20px; padding: 15px 30px; margin-bottom: 20px;" onclick="enviarPedido()">Enviar Pedido</button>
@@ -108,6 +108,14 @@
         </div>
         <div class="total-price" id="total-price">Precio Total: $0</div>
     </section>
+
+<!-- Sección de útiles -->
+<section id="utiles-section" style="display: none;">
+    <h2>Selecciona tus útiles escolares</h2>
+    <div id="utilesList"></div>
+    <div id="total-price-utiles" class="total-price">Precio Total: $0.00</div>
+    <button id="add-to-cart-button" onclick="agregarAlCarrito()">Añadir al carrito</button>
+</section>
 </main>
 
     <script src="script.js"></script>
@@ -518,6 +526,138 @@ function enviarPedido() {
     document.getElementById("order-options").style.display = "block"; // Mostrar la sección de opciones
     document.getElementById("opciones").style.display = "block"; // Mostrar el div de opciones
    }
+// Lista de útiles escolares con precios
+const utilesEscolares = [
+  { nombre: 'Cuadernos', id: 1, precio: 45 },
+  { nombre: 'Lápices', id: 2, precio: 10 },
+  { nombre: 'Borradores', id: 3, precio: 15 },
+  { nombre: 'Tijeras', id: 4, precio: 30 },
+  { nombre: 'Colores', id: 5, precio: 35 }
+];
+
+// Carrito compartido para guardar útiles seleccionados, impresión, etc.
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];  // Recupera el carrito almacenado si existe
+
+// Mostrar la lista de útiles cuando se presione el botón de útiles
+document.getElementById('utiles-button').onclick = function() {
+    document.getElementById('order-options').style.display = "none";
+    document.getElementById('utiles-section').style.display = "block";
+    mostrarListaDeUtiles();
+};
+
+// Mostrar la lista de útiles
+const utilesListContainer = document.getElementById('utilesList');
+function mostrarListaDeUtiles() {
+    utilesListContainer.innerHTML = ''; // Limpiar lista previa
+
+    utilesEscolares.forEach(util => {
+      const utilItem = document.createElement('div');
+      utilItem.classList.add('util-item');
+      utilItem.innerHTML = `
+        <input type="checkbox" id="util-${util.id}" data-id="${util.id}" onchange="actualizarPrecioTotalUtiles()">
+        <label for="util-${util.id}">${util.nombre}</label>
+        <span> - $${util.precio}</span>
+        <input type="number" id="cantidad-${util.id}" data-id="${util.id}" min="1" value="1" onchange="actualizarPrecioTotalUtiles()">
+      `;
+      utilesListContainer.appendChild(utilItem);
+    });
+
+    actualizarPrecioTotalUtiles();
+}
+
+// Actualizar precio total en tiempo real
+function actualizarPrecioTotalUtiles() {
+  let total = 0;
+
+  utilesEscolares.forEach(util => {
+    const checkbox = document.getElementById(`util-${util.id}`);
+    const cantidadInput = document.getElementById(`cantidad-${util.id}`);
+    
+    if (checkbox.checked) {
+      const cantidad = parseInt(cantidadInput.value);
+      total += util.precio * cantidad;
+    }
+  });
+
+  const totalPriceUtiles = document.getElementById('total-price-utiles');
+  totalPriceUtiles.textContent = `Precio Total: $${total.toFixed(2)}`;
+}
+
+// Agregar útiles seleccionados al carrito
+function agregarAlCarrito() {
+  utilesEscolares.forEach(util => {
+    const checkbox = document.getElementById(`util-${util.id}`);
+    const cantidadInput = document.getElementById(`cantidad-${util.id}`);
+    
+    if (checkbox.checked) {
+      const cantidad = parseInt(cantidadInput.value);
+
+      // Verificar si el artículo ya está en el carrito
+      const index = carrito.findIndex(item => item.id === util.id && item.tipo === 'utiles');
+      if (index === -1) {
+        carrito.push({ id: util.id, nombre: util.nombre, cantidad, precio: util.precio, tipo: 'utiles' });
+      } else {
+        carrito[index].cantidad += cantidad;
+      }
+    }
+  });
+
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  mostrarCarrito();
+
+  document.getElementById('utiles-section').style.display = "none";
+  document.getElementById('order-options').style.display = "block";
+}
+
+// Agregar impresión al carrito
+function agregarImpresionAlCarrito(impresion) {
+  const index = carrito.findIndex(item => item.id === impresion.id && item.tipo === 'impresion');
+  if (index === -1) {
+    carrito.push({ id: impresion.id, nombre: impresion.nombre, cantidad: 1, precio: impresion.precio, tipo: 'impresion' });
+  } else {
+    carrito[index].cantidad += 1;
+  }
+
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  mostrarCarrito();
+}
+
+// Mostrar el carrito y el precio total
+function mostrarCarrito() {
+  const orderList = document.getElementById('order-list');
+  const totalPriceElement = document.getElementById('total-price-order-options');
+  
+  orderList.innerHTML = '';
+  let total = 0;
+
+  carrito.forEach((item, index) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${item.nombre} - $${item.precio * item.cantidad} (${item.cantidad} unidad${item.cantidad > 1 ? 'es' : ''})`;
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Eliminar';
+    deleteButton.onclick = function() {
+      eliminarDelCarrito(index);
+    };
+    listItem.appendChild(deleteButton);
+    orderList.appendChild(listItem);
+
+    total += item.precio * item.cantidad;
+  });
+
+  totalPriceElement.textContent = `Precio Total: $${total.toFixed(2)}`;
+}
+
+// Eliminar producto del carrito
+function eliminarDelCarrito(index) {
+  carrito.splice(index, 1);
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  mostrarCarrito();
+}
+
+
+
+
 </script>
 </body>
 </html>
