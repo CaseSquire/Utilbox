@@ -1,29 +1,663 @@
-/* Estilos para el inicio de sesión */
-.login-container {
-    max-width: 400px;
-    margin: 100 auto;
-    padding: 200px;
-    background-color: #fff; /* Fondo blanco */
+
+/* Estilo para la sección de útiles */
+#utiles-section {
+    display: none;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Se asegura que la sección ocupe todo el espacio disponible */
+    max-width: 600px; /* O ajusta a un valor que se adapte mejor */
+    margin: 40px auto;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+/* Asegúrate de que no haya desplazamiento horizontal */
+body {
+    overflow-x: hidden; /* Previene el desplazamiento horizontal */
+}
+/* Título de la sección */
+#utiles-section h2 {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+#utilesList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 400px;
+    margin-bottom: 30px;
+    width: 100%; /* Hace que el contenedor ocupe todo el ancho disponible */
+}
+
+/* Item de producto de útiles escolares */
+.util-item {
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 4px 80px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
+}
+
+/* Hover de los items */
+.util-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del nombre del producto */
+.util-item label {
+    font-size: 1.4rem;
+    color: #555;
+    margin-right: 10px;
+    text-align: left;
+    font-weight: bold;
+    flex: 1 1 100%;
+}
+
+/* Precio del producto */
+.util-item span {
+    font-size: 1.2rem;
+    color: #333;
+    margin-right: 10px;
+    text-align: left;
+}
+
+/* Imagen del producto */
+.util-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    margin-right: 15px;
+}
+
+/* Hover de la imagen */
+.util-item img:hover {
+    transform: scale(2.2);
+}
+
+/* Selector de color */
+.util-item select {
+    padding: 8px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    flex: 1 1 30%;
+    background-color: #fafafa;
+    cursor: pointer;
+}
+
+/* Campo de cantidad */
+.util-item input[type="number"] {
+    width: 80px;
+    padding: 8px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    flex: 1 1 30%;
+    background-color: #fafafa;
+}
+
+/* Estilo para el total */
+#total-price-utiles {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #e8f5e9;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Botón de añadir al carrito */
+#add-utiles-to-cart-button {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#add-utiles-to-cart-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    #utiles-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .util-item {
+        flex-direction: column;
+        padding: 15px;
+        width: 100%;
+    }
+
+    .util-item label, .util-item span {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .util-item select, .util-item input[type="number"] {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    #add-utiles-to-cart-button {
+        width: 80%;
+        font-size: 1.3rem;
+    }
+
+    #total-price-utiles {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .util-item {
+        flex-direction: column;
+        padding: 12px;
+        width: 100%;
+    }
+
+    .util-item select, .util-item input[type="number"] {
+        width: 100%;
+    }
+
+    #add-utiles-to-cart-button {
+        width: 100%;
+        padding: 15px 0;
+        font-size: 1.3rem;
+    }
+
+    #total-price-utiles {
+        font-size: 1.4rem;
+        margin-top: 15px;
+        background-color: #e8f5e9;
+        padding: 12px;
+    }
+}
+
+/* Estilo para el contenedor del botón y el precio */
+#boton-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+
+
+/* Estilo para el botón de agregar al carrito */
+button {
+    background-color: #009688; /* Verde vibrante */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #00796b; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Título */
+h2 {
+    font-size: 28px;
+    color: #2c3e50; /* Azul oscuro para los títulos */
+    margin-bottom: 20px;
+}
+
+
+//* Estilo general para la sección de papelería */
+#papeleria-section {
+    padding: 30px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f4f6; /* Color de fondo más suave */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 750px;
+    width: 100%;
+    margin: 40px auto;
+    display: none;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Título de la sección */
+#papeleria-section h2 {
+    font-size: 2rem;
+    color: #3498db; /* Color azul para el título */
+    font-weight: bold;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+/* Contenedor de la lista de productos */
+#papeleriaList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 400px;
+    margin-bottom: 30px;
+}
+
+/* Item de producto de papelería */
+.papeleria-item {
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
+    background-color: #f9f9f9; /* Fondo claro para los elementos */
+}
+
+/* Hover de los items */
+.papeleria-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del nombre del producto */
+.papeleria-item label {
+    font-size: 1.4rem;
+    color: #2c3e50; /* Color oscuro para los nombres de los productos */
+    margin-right: 10px;
+    word-wrap: break-word;
+    flex: 1 1 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Precio del producto */
+.papeleria-item span {
+    font-size: 1.2rem;
+    color: #27ae60; /* Color verde para los precios */
+    margin-right: 10px;
+    flex: 1 1 100%;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+/* Selector de color */
+.papeleria-item select {
+    padding: 8px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid #3498db; /* Borde azul para el selector de color */
+    flex: 1 1 30%;
+    background-color: #ecf0f1; /* Fondo claro para el selector */
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Campo de cantidad */
+.papeleria-item input[type="number"] {
+    width: 80px;
+    padding: 8px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid #3498db; /* Borde azul para la cantidad */
+    flex: 1 1 30%;
+    background-color: #ecf0f1;
+    margin-top: 10px;
+}
+
+/* Botón de añadir al carrito */
+#add-papeleria-to-cart-button {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    background-color: #4CAF50; /* Botón verde */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: auto;
+}
+
+#add-papeleria-to-cart-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Estilo para el total */
+#total-price-papeleria {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #e8f5e9; /* Fondo suave verde */
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Responsividad: Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    #papeleria-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .papeleria-item {
+        flex-direction: column;
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 10px auto;
+    }
+
+    .papeleria-item label, .papeleria-item span {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .papeleria-item select, .papeleria-item input[type="number"] {
+        width: 100%;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    #add-papeleria-to-cart-button {
+        width: 80%;
+        font-size: 1.3rem;
+    }
+
+    #total-price-papeleria {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+}
+
+/* Responsividad para pantallas muy pequeñas (teléfonos en orientación vertical) */
+@media (max-width: 480px) {
+    .papeleria-item {
+        flex-direction: column;
+        padding: 12px;
+        width: 100%;
+    }
+
+    .papeleria-item select, .papeleria-item input[type="number"] {
+        width: 100%;
+    }
+
+    #add-papeleria-to-cart-button {
+        width: 100%;
+        padding: 15px 0;
+        font-size: 1.3rem;
+    }
+
+    #total-price-papeleria {
+        font-size: 1.4rem;
+        margin-top: 15px;
+        background-color: #e8f5e9;
+        padding: 12px;
+    }
+}
+
+
+/* Estilo para el carrito */
+#order-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#order-list li {
+    background-color: #ecf0f1;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #34495e;
+    transition: background-color 0.3s ease;
+}
+
+#order-list li:hover {
+    background-color: #dfe6e9;
+}
+
+/* Estilos responsivos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    /* Ajustar contenedor */
+    .container {
+        padding: 10px;
+    }
+
+    /* Productos list en columna en pantallas pequeñas */
+    .productos-list {
+        flex-direction: column;
+        align-items: center;
+        max-height: 70vh; /* Limitar altura para que se vea bien en pantallas más pequeñas */
+        overflow-y: auto;
+    }
+
+    /* Ajustar el tamaño de cada producto */
+    .producto-item {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    /* Ajustar tamaño de texto */
+    h2 {
+        font-size: 24px;
+    }
+
+    /* Ajustar el tamaño de los botones */
+    button {
+        padding: 10px 25px;
+        font-size: 16px;
+    }
+
+    /* Ajustar precio total */
+    #total-price-productos {
+        font-size: 18px;
+    }
+
+    #total-price-order-options {
+        font-size: 18px;
+    }
+
+    /* Ajuste de imagen para productos */
+    .producto-item img {
+        max-width: 90%; /* Asegurarse de que las imágenes no sobrepasen */
+        height: auto;
+    }
+
+    /* Ajustar lista del carrito */
+    #order-list li {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    text-align: center;
-    color: #333; /* Color del título */
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #3e8e41;
 }
 
 .login-button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    font-size: 16px;
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
+.login-button:hover {
+  background-color: #2196F3; /* Darker blue for Google */
+}
+
+.login-button:nth-child(2):hover {
+  background-color: #2980b9; /* Darker blue for Facebook */
+}
+
+/* Estilos globales y del body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('imagenes/fondo.jpeg'); /* Ruta correcta a la imagen */
+    background-size: cover;
+    background-position: center 20%; /* Valor reducido para mover la imagen menos hacia abajo */
+    background-repeat: no-repeat;
+    color: #333;
+}
+
+
+/* Estilos para la sección central (formulario de login u otros) */
+section {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco más opaco */
+    padding: 40px 30px;
+    border-radius: 16px; /* Bordes más redondeados */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+    width: 350px;
+    transform: translateY(100px);
+    animation: fadeInUp 1s forwards; /* Animación de desvanecimiento */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para los inputs dentro de los formularios */
+.form input {
+    padding: 15px;
+    margin: 12px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%; /* Hacer que el input ocupe todo el ancho */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form input:focus {
+    border-color: #ff8c00; /* Bordes naranjas cuando el input está enfocado */
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 140, 0, 0.5); /* Sombra de enfoque */
+}
+
+/* Estilo de los botones (submit, login, etc.) */
+.submit-button,
+.login-button,
+.order-button,
+.option-button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s ease-in-out;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 100%; /* Hace que los botones ocupen todo el ancho disponible */
+}
+
+/* Estilo de los botones de login */
 .login-button:nth-child(1) {
     background-color: #4285F4; /* Azul de Google */
 }
@@ -32,502 +666,559 @@ h1 {
     background-color: #3b5998; /* Azul de Facebook */
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
+.login-button:hover {
+    transform: scale(1.05);
 }
 
-.form input {
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
+/* Estilo del botón de submit */
 .submit-button {
-    background-color: #ff8c00; /* Color naranja */
+    background-color: #ff8c00;
     color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
 }
 
 .submit-button:hover {
-    background-color: #e67e22; /* Color naranja más oscuro en hover */
-}
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
-    background-image: url('fondo.jpg'); /* Reemplaza esto con la ruta de tu imagen */
-    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-color: #e67e22;
+    transform: scale(1.05);
 }
 
-/* Otros estilos */
-.fade-in {
-    animation: fadeIn 1s; /* Aquí puedes ajustar la duración de la animación */
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
-    background-image: url('fondo.jpg'); /* Asegúrate de que la ruta sea correcta */
-    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    display: flex; /* Usa flexbox para centrar elementos */
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
-}
-
-section {
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 8px; /* Esquinas redondeadas */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
-    width: 300px; /* Ancho del formulario */
-}
-
-/* Otros estilos */
-.fade-in {
-    animation: fadeIn 1s; /* Aquí puedes ajustar la duración de la animación */
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-.order-container {
-    text-align: center; /* Centra el contenido dentro del contenedor */
-    margin-top: 75px; /* Agrega margen superior para separación */
-}
-
+/* Estilo del botón de orden */
 .order-button {
-    padding: 20px 60px; /* Aumenta el tamaño del botón */
-    background-color: orange; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 24px; /* Tamaño de la fuente más grande */
-    transition: background-color 0.3s; /* Agrega una transición suave */
+    background-color: #ff8c00;
+    color: white;
+    font-size: 20px;
 }
 
 .order-button:hover {
-    background-color: darkorange; /* Color al pasar el mouse */
+    background-color: darkorange;
+    transform: scale(1.1);
 }
 
-.total-price {
-    font-size: 24px; /* Tamaño de la fuente para el precio */
-    margin-top: 15px;
-}
-
-.options-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Espacio entre los botones */
-    margin-top: 30px; /* Espacio superior */
-}
-
+/* Estilo de los botones de opciones */
 .option-button {
-    padding: 20px 40px; /* Tamaño más grande */
-    background-color: #ff8c00; /* Color de fondo */
-    color: white; /* Color del texto */
-    border: none;
-    border-radius: 10px; /* Bordes redondeados */
-    cursor: pointer;
-    font-size: 24px; /* Tamaño de fuente más grande */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
-    transition: background-color 0.3s, transform 0.2s; /* Transición suave */
+    background-color: #ff8c00;
+    color: white;
 }
 
 .option-button:hover {
-    background-color: #e67e22; /* Color más oscuro al pasar el mouse */
-    transform: scale(1.05); /* Aumentar el tamaño ligeramente al pasar el mouse */
+    background-color: #e67e22;
+    transform: scale(1.05); /* Efecto de expansión al hacer hover */
 }
 
+/* Estilos del contenedor de la orden */
+.order-container {
+    text-align: center;
+    margin-top: 30px;
+    width: 350px;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards;
+}
+
+/* Estilo para mostrar el precio total */
+.total-price {
+    font-size: 22px;
+    color: #333;
+    margin-top: 15px;
+}
+
+/* Transición de fade-in */
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mejoras visuales para los botones con efectos */
+button:focus {
+    outline: none;
+}
+
+button:active {
+    transform: scale(0.98); /* Efecto de "presionar" al hacer clic */
+}
+
+
+/* Estilo para los encabezados */
 h2 {
-    color: #333; /* Color del título */
-    font-size: 28px; /* Tamaño de fuente más grande */
-    margin-bottom: 20px; /* Espacio inferior */
+    color: #333;
+    font-size: 32px; /* Tamaño más grande para mayor impacto */
+    font-weight: bold;
+    margin-bottom: 20px;
+    
+   
+text-align: center; /* Centra el título */
+}
+
+/* Estilo para la sección de impresión */
+#impresion {
+    padding: 40px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #ffffff; /* Fondo blanco para mejor contraste */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    transition: transform 0.3s ease-in-out; /* Suaviza la animación */
+}
+
+#impresion:hover {
+    transform: scale(1.03); /* Le da un efecto de ampliación al pasar el ratón */
+}
+
+/* Estilo para las imágenes previas de la impresión */
+#image-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 
- #impresion {
-        padding: 40px;
-        max-width: 1000px; /* Ancho mayor para la sección */
-        margin: 0 auto; /* Centra la sección */
-        background-color: #f9f9f9; /* Color de fondo */
-        border-radius: 10px; /* Bordes redondeados */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+#image-preview-container img {
+    width: 120px;
+    margin: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave en las imágenes */
+}
+
+/* Estilo para el área de pegado */
+#paste-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    
+    m
+min-height: 120px; /* Aumenta la altura mínima para mejor visualización */
+    background-color: #f9f9f9;
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+#paste-area:hover {
+    background-color: #eaeaea; /* Cambio de color al pasar el ratón */
+}
+
+/* Estilo para el área de especificaciones */
+#specifications {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    min-height: 100px; /* Un poco más de espacio en la caja de texto */
+}
+
+/* Estilo para los botones */
+.submit-button {
+    background-color: #ff8c00; /* Color naranja */
+    color: white;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    
+    text-ali
+text-align: center;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+    background-color: #e67e22; /* Color más oscuro en hover */
+    transform: scale(1.05); /* Expansión al pasar el ratón */
+}
+
+/* Estilo para el formulario */
+.form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.form:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Aumento de sombra en hover */
+}
+
+.form input {
+    width: 100%;
+    padding: 12px;
+    
+   
+margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form input:focus {
+    border-color: #ff8c00;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 140, 0, 0.5);
+}
+
+/* Estilo para mostrar mensajes de error */
+.error-message {
+    
+  
+color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Animación de entrada */
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
     }
-
-    #image-preview-container img {
-        border: 1px solid #ccc; /* Borde suave para imágenes */
-        max-width: 150px; /* Limita el ancho de las imágenes */
-        margin: 5px;
+    to {
+        opacity: 1;
     }
+}
 
-    #paste-area {
-        min-height: 100px; /* Altura mínima para el área de pegado */
-    }
+/* Estilo global */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
 
-    #specifications {
-        padding: 10px; /* Espaciado interno */
-        border: 1px solid #ccc; /* Borde del textarea */
-        border-radius: 5px; /* Bordes redondeados */
-    }
+/* Estilo para el área de pegado */
+#paste-area {
+    border: 2px dashed #ccc;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: left;
+    min-height: 80px; /* Aumentado para una mejor visualización */
+    background-color: #f9f9f9;
+    border-radius: 8px; /* Bordes redondeados para suavizar la apariencia */
+    transition: background-color 0.3s ease;
+}
 
-    .submit-button {
-        background-color: #ff8c00; /* Color naranja */
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s;
-        margin-top: 10px; /* Espacio superior */
-    }
+#paste-area:hover {
+    background-color: #eaeaea; /* Efecto hover más claro */
+}
 
-    .submit-button:hover {
-        background-color: #e67e22; /* Color más oscuro en hover */
-    }
+/* Previsualización de imagen */
+#image-preview-container img {
+    width: 100px;
+    height: auto; /* Mantener la proporción */
+    margin: 5px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
 
+/* Estilo de la lista de pedidos */
+.order-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
 
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
 
- <style>
-        #paste-area {
-            border: 2px dashed #ccc;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-            min-height: 100px;
-            background-color: #f9f9f9;
-        }
+.order-item img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 4px;
+}
 
-        #image-preview-container img {
-            width: 100px;
-            margin: 5px;
-        }
-    </style>
- <style>
-        /* Estilos básicos para el formulario */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-        }
-        .form {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .form input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .submit-button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .submit-button:hover {
-            background-color: #45a049;
-        }
-        .error-message {
-            color: red;
-            font-size: 0.9em;
-        }
-    </style>
+.modify-button, .delete-button {
+    padding: 5px 10px;
+    background-color: #ff8c00; /* Color naranja */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-    <style>
-        #paste-area {
-            border: 2px dashed #ccc;
-            padding: 10px;
-            margin: 20px 0;
-            text-align: left;
-            min-height: 60px;
-            background-color: #f9f9f9;
-        }
+.modify-button:hover, .delete-button:hover {
+    background-color: #e67e22;
+    transform: scale(1.05); /* Efecto de aumento al pasar el ratón */
+}
 
-        #image-preview-container img {
-            width: 100px;
-            margin: 5px;
-        }
+/* Detalles de pedido ocultos */
+.order-details {
+    display: none;
+    margin-top: 10px;
+}
 
-        .total-price {
-            font-weight: bold;
-            margin-top: 10px;
-        }
+/* Estilo del formulario */
+.form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px; /* Radio más suave */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease;
+    border: 1px solid #ddd; /* Añadir borde suave */
+}
 
-        .order-list {
-            list-style-type: none;
-            padding: 0;
-        }
+.form:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Aumento de sombra en hover */
+    transform: scale(1.02); /* Efecto de leve aumento */
+}
 
-        .order-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 5px 0;
-        }
+/* Estilo del botón de enviar */
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
 
-        .order-item img {
-            width: 50px;
-            margin-right: 10px;
-        }
+.submit-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
 
-        .modify-button, .delete-button {
-            margin-left: 10px;
-        }
+.submit-button:active {
+    transform: scale(0.98);
+}
 
-        .order-details {
-            display: none;
-            margin-top: 10px;
-        }
+/* Estilo de mensaje de error */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    text-align: center;
+}
 
-        .form-container {
-            margin-bottom: 20px;
-        }
-    </style>
-    <style>
-        /* Estilos básicos para el formulario */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-        }
-        .form {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .submit-button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .submit-button:hover {
-            background-color: #45a049;
-        }
-        .error-message {
-            color: red;
-            font-size: 0.9em;
-        }
-        /* Estilos para la pestaña desplegable */
-        .dropdown {
-            display: flex;
-            flex-direction: column;
-            max-width: 300px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin: 20px auto;
-            padding: 10px;
-        }
-        .dropdown-header {
-            cursor: pointer;
-            padding: 10px;
-            background: #4CAF50;
-            color: white;
-            border-radius: 4px;
-            text-align: center;
-        }
-        .dropdown-content {
-            display: none;
-            padding: 10px;
-            border-top: 1px solid #ccc;
-        }
-        .dropdown-content p {
-            margin: 5px 0;
-        }
-    </style>
- <style>
-        /* Estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            background-color: #f4f4f4;
-        }
+/* Estilo para la pestaña desplegable (dropdown) */
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 10px;
+}
 
-        main {
-            flex: 1;
-            padding: 20px;
-            transition: margin-left 0.3s;
-        }
+.dropdown-header {
+    cursor: pointer;
+    padding: 12px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
 
-        .sidebar {
-            position: relative;
-            width: 200px;
-            background-color: #fff;
-            border-right: 1px solid #ccc;
-            transition: transform 0.3s;
-            transform: translateX(-100%);
-        }
+.dropdown-header:hover {
+    background-color: #45a049;
+}
 
-        .sidebar.open {
-            transform: translateX(0);
-        }
+.dropdown-content {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
 
-        .toggle-button {
-            position: absolute;
-            top: 20px;
-            left: -30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
+.dropdown-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
 
-        .user-info {
-            padding: 10px;
-        }
+/* Mostrar el contenido del dropdown cuando está activo */
+.dropdown.open .dropdown-content {
+    display: block;
+}
 
-        .order-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        /* Estilo para el dropdown del usuario */
-        .user-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        section {
-            display: none;
-        }
- <style>
- body {
-      font-family: Arial, sans-serif;
-    }
-    .utiles-container {
-      width: 100%;
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-    .util-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 10px 0;
-    }
-    .util-item input[type="number"] {
-      width: 60px;
-      margin-left: 10px;
-    }
-    .util-item label {
-      flex-grow: 1;
-      margin-left: 10px;
-    }
-    .submit-btn {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin-top: 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .submit-btn:hover {
-      background-color: #45a049;
-    }
-  </style>
-
- 
 /* General */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    height: 100vh; /* Ocupa toda la altura */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background-color: #f4f4f4;
 }
 
-/* Estilos para el contenedor principal */
+/* Contenedor principal */
 main {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra el contenido del main */
+    align-items: center;
     padding: 20px;
-    max-width: 1200px; /* Limita el ancho máximo */
-    width: 100%; /* Permite que el contenedor sea responsive */
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 /* Estilos para la pestaña desplegable */
 .dropdown {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrar la pestaña desplegable */
-    max-width: 300px; /* Establecer un ancho máximo */
+    align-items: center;
+    max-width: 300px;
     background: white;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto; /* Centrar la pestaña */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
     padding: 10px;
 }
 
 .dropdown-header {
     cursor: pointer;
-    padding: 20px;
+    padding: 12px;
     background: #4CAF50;
     color: white;
-    border-radius: 4px;
+    border-radius: 8px;
     text-align: center;
+    font-size: 16px;
 }
 
 .dropdown-content {
-    display: none; /* Ocultar contenido por defecto */
+    display: none;
     padding: 10px;
 }
 
 /* Mostrar el contenido de la pestaña cuando se hace clic */
 .dropdown.open .dropdown-content {
-    display: block; /* Mostrar contenido */
+    display: block;
 }
 
-/* Otros estilos */
+/* Estilo de contenedor de útiles */
+.utiles-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordes más suaves */
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.util-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.util-item input[type="number"] {
+    width: 60px;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.util-item label {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+    .form {
+        width: 90%; /* Hacer el formulario más estrecho en móviles */
+        padding: 15px;
+    }
+
+    .submit-button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .utiles-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .util-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .util-item input[type="number"] {
+        width: 50px;
+    }
+}
+
+}
+
+/* Estilo para el dropdown de usuario */
 .user-dropdown {
     position: relative;
     display: inline-block;
@@ -541,6 +1232,12 @@ main {
     z-index: 1;
     padding: 10px;
 }
+
+.user-dropdown.open .user-info {
+    display: block; /* Mostrar la info del usuario cuando esté abierto */
+}
+
+/* Estilo para el botón de enviar pedido */
 #enviarPedido {
     background-color: #25D366; /* Color verde de WhatsApp */
     color: white;
@@ -548,18 +1245,15 @@ main {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    padding: 10px;
+    margin-top: 10px;
 }
 
 #enviarPedido:hover {
     background-color: #128C7E; /* Color más oscuro al pasar el mouse */
 }
 
-.user-dropdown.open .user-info {
-    display: block; /* Mostrar la info del usuario cuando esté abierto */
-}
-
-   </style>
-	/* General */
+/* General */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -595,34 +1289,30 @@ main {
     transform: translateX(0);
 }
 
-<style>
-        /* Estilos para el dropdown del usuario */
-        .user-dropdown {
-            position: relative;
-            display: inline-block;
-        }
+/* Estilos para el dropdown de usuario */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-        .user-info {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ccc;
-            z-index: 1;
-            padding: 10px;
-            width: 200px;
-        }
+.user-info {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1;
+    padding: 10px;
+    width: 200px;
+}
 
-        .order-list {
-            list-style-type: none;
-            padding: 0;
-        }
+.user-dropdown.open .user-info {
+    display: block; /* Mostrar la info del usuario cuando esté abierto */
+}
 
-        /* Ocultar todas las secciones por defecto */
-        section {
-            display: none;
-        }
-    </style>
-
+.order-list {
+    list-style-type: none;
+    padding: 0;
+}
 
 /* Estilo para la pestaña desplegable */
 .dropdown {
@@ -656,187 +1346,71 @@ main {
     display: block; /* Mostrar contenido */
 }
 
-/* Otros estilos */
-.user-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.user-info {
+/* Ocultar todas las secciones por defecto */
+section {
     display: none;
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    z-index: 1;
-    padding: 10px;
-    width: 200px;
 }
 
-.user-dropdown.open .user-info {
-    display: block; /* Mostrar la info del usuario cuando esté abierto */
-}
-	
-	
-<style>
-        /* Estilos para el dropdown del usuario */
-        .user-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .user-info {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ccc;
-            z-index: 1;
-            padding: 10px;
-            width: 200px;
-        }
-
-        .order-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        /* Ocultar todas las secciones por defecto */
-        section {
-            display: none;
-        }
-    </style>
-.container-flex {
-    display: flex;
-    justify-content: space-around; /* Espacio entre ambos cuadros */
-    align-items: flex-start;
-}
-
-<style>
-        /* Estilos básicos */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-        }
-        main {
-            display: flex;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .sidebar h2 {
-            margin: 0;
-            font-size: 24px;
-            text-align: center;
-        }
-        .sidebar p {
-            margin: 10px 0;
-        }
-        .sidebar button {
-            display: block;
-            width: 100%;
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #ff9800;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .sidebar button:hover {
-            background-color: #e68900;
-        }
-        section {
-            flex: 1;
-            padding: 20px;
-        }
-    </style>
-
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .sidebar {
-            position: fixed;
-            left: -250px; /* Escondido inicialmente */
-            width: 250px;
-            height: 100%;
-            background-color: #f4f4f4;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-            transition: left 0.3s ease;
-            padding: 15px;
-        }
-        .sidebar.active {
-            left: 0; /* Desplegar */
-        }
-        .toggle-sidebar {
-            position: fixed;
-            left: 10px;
-            top: 20px;
-            cursor: pointer;
-            font-size: 24px;
-        }
-        .submit-button {
-            display: block;
-            margin: 20px auto;
-        }
-        .error-message {
-            color: red;
-        }
-        /* Estilos adicionales para la página */
-    </style>
-	<style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .sidebar {
-            position: fixed;
-            left: -250px; /* Escondido inicialmente */
-            width: 250px;
-            height: 100%;
-            background-color: #f4f4f4;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-            transition: left 0.3s ease;
-            padding: 15px;
-        }
-        .sidebar.active {
-            left: 0; /* Desplegar */
-        }
-        .toggle-sidebar {
-            position: fixed;
-            left: 10px;
-            top: 20px;
-            cursor: pointer;
-            font-size: 24px;
-        }
-        .submit-button {
-            display: block;
-            margin: 20px auto;
-        }
-        .error-message {
-            color: red;
-        }
-        /* Estilos adicionales para la página */
-    </style>
-
-
+/* General */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
+    padding: 0;
 }
 
+/* Contenedor principal */
 main {
     padding: 20px;
 }
 
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: -250px; /* Escondido inicialmente */
+    width: 250px;
+    height: 100%;
+    background-color: #f4f4f4;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    transition: left 0.3s ease;
+    padding: 15px;
+}
+
+.sidebar.active {
+    left: 0; /* Desplegar la sidebar */
+}
+
+/* Botón para desplegar el sidebar */
+.toggle-sidebar {
+    position: fixed;
+    left: 10px;
+    top: 20px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Botón de envío */
+.submit-button {
+    display: block;
+    margin: 20px auto;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+/* Mensajes de error */
+.error-message {
+    color: red;
+}
+
+/* Dropdown */
 .dropdown {
     position: absolute;
     top: 20px;
@@ -847,6 +1421,10 @@ main {
 .dropdown-header {
     cursor: pointer;
     font-size: 24px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
 }
 
 .dropdown-content {
@@ -859,26 +1437,11 @@ main {
     z-index: 1001;
 }
 
-.form {
-    margin-bottom: 20px;
+.dropdown.open .dropdown-content {
+    display: block; /* Mostrar el contenido del dropdown */
 }
 
-.submit-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-}
-
-.submit-button:hover {
-    background-color: #45a049;
-}
-
-.error-message {
-    color: red;
-}
-
+/* Contenedores de opciones */
 .options-container {
     display: flex;
     justify-content: center;
@@ -891,18 +1454,54 @@ main {
     background-color: #007BFF;
     color: white;
     border: none;
+    border-radius: 5px;
 }
 
 .option-button:hover {
     background-color: #0056b3;
 }
 
+/* Total Price */
 .total-price {
     text-align: center;
     font-size: 20px;
     margin-top: 20px;
 }
-  
+
+/* Estilo para los cuadros flexibles */
+.container-flex {
+    display: flex;
+    justify-content: space-around; /* Espacio entre los cuadros */
+    align-items: flex-start;
+}
+
+/* Estilo para la barra lateral (sidebar) */
+.sidebar h2 {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+.sidebar p {
+    margin: 10px 0;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.sidebar button:hover {
+    background-color: #e68900;
+}
+
 
 #logout-button {
     background-color: #FF4500; /* Color de fondo para el botón de cerrar sesión */
@@ -1220,3 +1819,132 @@ input[type="checkbox"] {
 }
 
 
+/* Contenedor principal de la pestaña de útiles */
+#utilities-tab {
+    display: none; /* Ocultar por defecto */
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 800px;
+    margin: 30px auto;
+    position: relative;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Título de la pestaña */
+#utilities-tab h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #007BFF;
+}
+
+/* Lista de útiles */
+#utilities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo para cada item en la lista */
+.utility-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #007BFF, #00C6FF);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out;
+    color: white;
+}
+
+.utility-item:hover {
+    transform: scale(1.03); /* Efecto de agrandamiento al pasar el ratón */
+}
+
+/* Nombre del útil */
+.utility-name {
+    font-size: 18px;
+    font-weight: bold;
+    flex: 2;
+}
+
+/* Contenedor de cantidad y checkbox */
+.utility-actions {
+    display: flex;
+    align-items: center;
+}
+
+.utility-actions input[type="number"] {
+    width: 60px;
+    padding: 6px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+    color: #333;
+}
+
+.utility-actions input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: #00C6FF; /* Personalizar el color del checkbox */
+    margin-right: 15px;
+}
+
+/* Botón para agregar al carrito */
+.add-to-cart-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.add-to-cart-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Estilos para el carrito */
+#cart {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#cart h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #333;
+}
+
+#cart ul {
+    list-style: none;
+    padding: 0;
+}
+
+#cart ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+#cart ul li:last-child {
+    border-bottom: none;
+}
