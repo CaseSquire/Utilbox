@@ -417,7 +417,7 @@ function addToOrder() {
     const pasteArea = document.getElementById("paste-area").value;
     const colorInputs = document.querySelectorAll('input[value="color"]:checked');
     const bwInputs = document.querySelectorAll('input[value="bw"]:checked');
-
+    
     if (!pasteArea) {
         alert("Por favor, ingresa una descripción de la impresión.");
         return;
@@ -450,6 +450,9 @@ function addToOrder() {
         orderList.push(orderItem);  // Agregar al carrito
         totalCarrito += totalPrice;  // Actualizar el total global del carrito
 
+        // Guardar el carrito de impresión en localStorage
+        localStorage.setItem('carritoImpresion', JSON.stringify(orderList));
+
         updateOrderList();  // Actualizar la lista visual del carrito
         updateCarritoTotal();  // Actualizar el precio total del carrito en la interfaz
         
@@ -463,6 +466,7 @@ function addToOrder() {
         alert("Por favor, selecciona al menos una opción de color o blanco y negro para cada imagen.");
     }
 }
+
 
 function updateTotalPriceRealTime() {
     const colorInputs = document.querySelectorAll('input[value="color"]:checked');
