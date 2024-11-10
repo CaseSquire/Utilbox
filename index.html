@@ -115,7 +115,7 @@
                 <button id="add-order-btn" type="button" style="margin-top: 20px; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px;" onclick="addToOrder()">Añadir al Pedido</button>
             </div>
         </div>
-        <div class="total-price" id="total-price">Precio Total: $0</div>
+        <div id="total-carrito">Total del Carrito: $0</div>
 		 <button onclick="confirmarSalida('impresion')">Atrás</button>
     </section>	
 
@@ -325,7 +325,7 @@ function showOrderOptions() {
     document.getElementById("dashboard").style.display = "none";
     document.getElementById("order-options").style.display = "block";
     document.getElementById("impresion").style.display = "none"; // Oculta la sección de impresión
-	 document.getElementById('opciones').style.display = 'block';
+    document.getElementById('opciones').style.display = 'block';
 }
 
 function showImpresion() {
@@ -339,11 +339,10 @@ const imagePreviewContainer = document.getElementById('image-preview-container')
 const totalPriceElement = document.getElementById('total-price');
 let totalPrice = 0;
 
-// Previsualización de imágenes y cálculo de precios
 function previewImages(event) {
     const files = event.target.files;
+    const imagePreviewContainer = document.getElementById('image-preview-container');
     imagePreviewContainer.innerHTML = ''; // Limpia el contenedor al inicio
-    totalPrice = 0; // Reinicia el precio total
 
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -362,7 +361,7 @@ function previewImages(event) {
             removeButton.textContent = 'Eliminar';
             removeButton.addEventListener('click', function() {
                 previewDiv.remove(); // Elimina vista previa de imagen
-                updateTotalPrice(); // Actualiza el total después de eliminar
+                updateTotalPriceRealTime(); // Actualiza el total después de eliminar
             });
 
             // Inputs de opciones de color y blanco y negro como botones de radio
@@ -370,7 +369,7 @@ function previewImages(event) {
             colorInput.type = 'radio';
             colorInput.name = `color-type-${i}`; // Nombre único para cada imagen
             colorInput.value = 'color';
-            colorInput.addEventListener('change', updateTotalPrice); // Actualiza total al cambiar
+            colorInput.addEventListener('change', updateTotalPriceRealTime); // Actualiza total al cambiar
             const colorLabel = document.createElement('label');
             colorLabel.textContent = 'Color';
 
@@ -378,7 +377,7 @@ function previewImages(event) {
             bwInput.type = 'radio';
             bwInput.name = `color-type-${i}`; // Misma agrupación para seleccionar solo uno
             bwInput.value = 'bw';
-            bwInput.addEventListener('change', updateTotalPrice); // Actualiza total al cambiar
+            bwInput.addEventListener('change', updateTotalPriceRealTime); // Actualiza total al cambiar
             const bwLabel = document.createElement('label');
             bwLabel.textContent = 'Blanco y Negro';
 
@@ -390,6 +389,7 @@ function previewImages(event) {
         reader.readAsDataURL(file);
     }
 }
+
 
 // Actualización del precio total
 function updateTotalPrice() {
@@ -410,9 +410,10 @@ function updateTotalPrice() {
     totalPriceElement.innerText = `Precio Total: $${totalPrice}`;
 }
 
-let orderList = []; // Array para almacenar los pedidos
+let totalCarrito = 0;  // Variable global para el total del carrito
+let orderList = []; // Lista de pedidos
 
-function addToOrder() {
+function addToOrder() { 
     const pasteArea = document.getElementById("paste-area").value;
     const colorInputs = document.querySelectorAll('input[value="color"]:checked');
     const bwInputs = document.querySelectorAll('input[value="bw"]:checked');
@@ -428,7 +429,7 @@ function addToOrder() {
     }
 
     let description = `Descripción: ${pasteArea}\n`;
-    let totalPrice = 0; // Inicializar el precio total
+    let totalPrice = 0;  // Inicia el precio del pedido
 
     // Descripción de cada imagen según selección
     document.querySelectorAll('.image-preview').forEach((preview, index) => {
@@ -437,18 +438,23 @@ function addToOrder() {
 
         if (colorOption) {
             description += `Imagen ${index + 1}: Color - Precio: $20\n`;
-            totalPrice += 20; // Sumar el precio
+            totalPrice += 20;  // Sumar el precio por color
         } else if (bwOption) {
             description += `Imagen ${index + 1}: Blanco y Negro - Precio: $10\n`;
-            totalPrice += 10; // Sumar el precio
+            totalPrice += 10;  // Sumar el precio por blanco y negro
         }
     });
 
-    // Añadir el pedido con descripción y precio total si el total es mayor a 0
     if (totalPrice > 0) {
         const orderItem = { description: description, totalPrice: totalPrice };
-        orderList.push(orderItem); // Agregar el pedido al array
-        updateOrderList(); // Actualizar la lista visualmente
+        orderList.push(orderItem);  // Agregar al carrito
+        totalCarrito += totalPrice;  // Actualizar el total global del carrito
+
+        updateOrderList();  // Actualizar la lista visual del carrito
+        updateCarritoTotal();  // Actualizar el precio total del carrito en la interfaz
+        
+        // Actualizar el total global en la interfaz de pedidos
+        document.getElementById('total-price-order-options').innerText = `Precio Total: $${totalCarrito}`;
 
         // Redirigir a la sección de pedidos
         document.getElementById("order-options").style.display = "block";
@@ -458,30 +464,60 @@ function addToOrder() {
     }
 }
 
+function updateTotalPriceRealTime() {
+    const colorInputs = document.querySelectorAll('input[value="color"]:checked');
+    const bwInputs = document.querySelectorAll('input[value="bw"]:checked');
+    let total = 0;
+
+    // Sumar precios de las imágenes seleccionadas en color
+    colorInputs.forEach(() => {
+        total += 20;
+    });
+
+    // Sumar precios de las imágenes seleccionadas en blanco y negro
+    bwInputs.forEach(() => {
+        total += 10;
+    });
+
+    document.getElementById('total-carrito').innerText = `Total del Carrito: $${total}`;
+}
+
+
+document.getElementById('image-upload').addEventListener('change', previewImages);
+document.querySelectorAll('input[type="radio"]').forEach(input => {
+    input.addEventListener('change', updateTotalPriceRealTime);
+});
 function updateOrderList() {
     const orderListElement = document.getElementById("order-list");
-    orderListElement.innerHTML = ''; // Limpiar la lista actual
+    orderListElement.innerHTML = '';  // Limpiar la lista actual
 
     orderList.forEach((item, index) => {
         const listItem = document.createElement("li");
-        listItem.innerText = `${item.description} Precio Total: $${item.totalPrice}`;
+        listItem.innerText = item.description; // Mostrar solo la descripción, sin el precio total
 
         // Botón para eliminar el pedido
         const deleteButton = document.createElement("button");
         deleteButton.innerText = "Eliminar";
-        deleteButton.onclick = () => removeFromOrder(index); // Llama a la función de eliminación
+        deleteButton.onclick = () => removeFromOrder(index);  // Eliminar el pedido
         listItem.appendChild(deleteButton);
 
         orderListElement.appendChild(listItem);
     });
+}
+// Actualiza el precio total del carrito en la interfaz
+function updateCarritoTotal() {
+    const totalCarritoElement = document.getElementById("total-price-order-options");
+    totalCarritoElement.innerText = `Precio Total: $${totalCarrito.toFixed(2)}`; // Muestra el total del carrito
 }
 
 // Función para eliminar un pedido del carrito
 function removeFromOrder(index) {
     // Verifica que el índice sea válido
     if (index >= 0 && index < orderList.length) {
-        orderList.splice(index, 1); // Elimina el pedido del array
-        updateOrderList(); // Actualiza la lista visualmente
+        totalCarrito -= orderList[index].totalPrice;  // Restar el precio del pedido eliminado
+        orderList.splice(index, 1);  // Elimina el pedido del array
+        updateOrderList();  // Actualiza la lista visualmente
+        updateCarritoTotal();  // Actualiza el total del carrito
     } else {
         console.error("Índice fuera de rango: ", index);
     }
@@ -508,10 +544,9 @@ function goToImpresion() {
     document.getElementById("order-options").style.display = "none"; // Ocultar las opciones de pedido
 }
 
-
-
 // Evento para previsualizar imágenes al cargar archivos
 imageUpload.addEventListener('change', previewImages);
+
 
 
 
@@ -531,27 +566,30 @@ function enviarPedido() {
 
     // Agregar productos de impresión
     if (carritoImpresion.length > 0) {
-        mensaje += "Impresión:\n";
+        mensaje += "🖨️ *Impresión:*\n";
         carritoImpresion.forEach(item => {
-            mensaje += `${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}\n`;
+            const subtotal = (item.precio * item.cantidad).toFixed(2);
+            mensaje += `- ${item.nombre} x${item.cantidad} - $${subtotal}\n`;
         });
         mensaje += "\n";
     }
 
     // Agregar productos de útiles
     if (carritoUtiles.length > 0) {
-        mensaje += "Útiles Escolares:\n";
+        mensaje += "✏️ *Útiles Escolares:*\n";
         carritoUtiles.forEach(item => {
-            mensaje += `${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}\n`;
+            const subtotal = (item.precio * item.cantidad).toFixed(2);
+            mensaje += `- ${item.nombre} x${item.cantidad} - $${subtotal}\n`;
         });
         mensaje += "\n";
     }
 
     // Agregar productos de papelería
     if (carritoPapeleria.length > 0) {
-        mensaje += "Papelería:\n";
+        mensaje += "📎 *Papelería:*\n";
         carritoPapeleria.forEach(item => {
-            mensaje += `${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}\n`;
+            const subtotal = (item.precio * item.cantidad).toFixed(2);
+            mensaje += `- ${item.nombre} x${item.cantidad} - $${subtotal}\n`;
         });
         mensaje += "\n";
     }
@@ -567,7 +605,10 @@ function enviarPedido() {
 
     // Si hay imágenes, agregar al mensaje
     if (images.length > 0) {
-        mensaje += "Imágenes:\n" + images.join('\n') + "\n";
+        mensaje += "*Imágenes adjuntas:*\n";
+        images.forEach((src, index) => {
+            mensaje += `- Imagen ${index + 1}: ${src}\n`;
+        });
     }
 
     // URL encode el mensaje
@@ -837,7 +878,7 @@ function mostrarCarritoPapeleria() {
     const papeleriaItems = carritoPapeleria.filter(item => item.tipo === 'papeleria');
     if (papeleriaItems.length > 0) {
         const papeleriaHeading = document.createElement('h3');
-        papeleriaHeading.textContent = 'Productos de Papelería:';
+      
         orderList.appendChild(papeleriaHeading);
 
         papeleriaItems.forEach((item, index) => {
